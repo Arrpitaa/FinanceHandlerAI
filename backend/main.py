@@ -2,12 +2,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.user_routes import router as user_router
 from routes.auth_routes import router as auth_router
+from routes.expense_routes import router as expense_router
 
 from database import engine
 from models.user import User
+from models.expense import Expense
 
 # Create database tables
 User.metadata.create_all(bind=engine)
+Expense.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Finance Handler AI",
@@ -16,6 +19,7 @@ app = FastAPI(
 )
 app.include_router(user_router)
 app.include_router(auth_router)
+app.include_router(expense_router)
 
 # CORS
 app.add_middleware(
