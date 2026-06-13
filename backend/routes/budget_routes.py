@@ -5,12 +5,14 @@ from database import get_db
 
 from schemas.budget_schema import (
     BudgetCreate,
-    BudgetResponse
+    BudgetResponse,
+    BudgetSummary
 )
 
 from services.budget_service import (
     create_budget,
-    get_all_budgets
+    get_all_budgets,
+    get_budget_summary
 )
 
 router = APIRouter(
@@ -41,3 +43,12 @@ def add_budget(
         db=db,
         amount=budget.amount
     )
+
+@router.get(
+    "/summary",
+    response_model=BudgetSummary
+)
+def budget_summary(
+    db: Session = Depends(get_db)
+):
+    return get_budget_summary(db)
