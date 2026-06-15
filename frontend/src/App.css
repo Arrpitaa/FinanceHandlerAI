@@ -125,3 +125,36 @@ font-size: 28px;
 font-weight: bold;
 color: #2563eb;
 }
+.expense-form {
+  background: white;
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 20px;
+}
+.expense-form input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.expense-form button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.transactions {
+  margin-top: 40px;
+}
+
+.transaction-card {
+  background: white;
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 14px;
+}
