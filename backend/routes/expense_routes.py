@@ -11,7 +11,8 @@ from schemas.expense_schema import (
 from services.expense_service import (
     create_expense,
     get_all_expenses,
-    delete_expense
+    delete_expense,
+    get_category_summary
 )
 
 router = APIRouter(
@@ -54,3 +55,8 @@ def remove_expense(
         db=db,
         expense_id=expense_id
     )
+@router.get("/category-summary")
+def category_summary(
+    db: Session = Depends(get_db)
+):
+    return get_category_summary(db)

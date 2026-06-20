@@ -41,3 +41,18 @@ def delete_expense(
     db.commit()
 
     return {"message": "Expense deleted successfully"}
+    
+def get_category_summary(db: Session):
+    expenses = db.query(Expense).all()
+
+    summary = {}
+
+    for expense in expenses:
+        category = expense.category
+
+        if category not in summary:
+            summary[category] = 0
+
+        summary[category] += expense.amount
+
+    return summary
