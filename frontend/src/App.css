@@ -415,3 +415,37 @@ color: #6b7280;
   color: #111827;
   font-weight: bold;
 }
+.smart-analytics {
+  margin-top: 40px;
+}
+
+.smart-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.smart-card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.smart-card:hover {
+  transform: translateY(-6px);
+}
+
+.smart-card h3 {
+  color: #111827;
+}
+
+.smart-card p {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2563eb;
+}

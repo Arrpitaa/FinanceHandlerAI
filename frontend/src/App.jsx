@@ -66,6 +66,37 @@ const chartData =
     amount: expense.amount,
   })
 );
+const averageExpense =
+  expenses.length > 0
+    ? (
+        summary.total_expenses /
+        expenses.length
+      ).toFixed(0)
+    : 0;
+const largestExpense =
+  expenses.length > 0
+    ? Math.max(
+        ...expenses.map(
+          (e) => e.amount
+        )
+      )
+    : 0;
+const savingsRate =
+  summary.total_budget > 0
+    ? (
+        (summary.remaining_budget /
+          summary.total_budget) *
+        100
+      ).toFixed(1)
+    : 0;
+const financialHealth =
+  savingsRate >= 70
+    ? "Excellent"
+    : savingsRate >= 40
+    ? "Good"
+    : savingsRate >= 20
+    ? "Average"
+    : "Needs Improvement";
 
 
 useEffect(() => {
@@ -480,6 +511,33 @@ Finance Handler AI </div>
     </div>
   </div>
 
+<div className="smart-analytics">
+  <h2>Smart Analytics</h2>
+
+  <div className="smart-grid">
+
+    <div className="smart-card">
+      <h3>Average Expense</h3>
+      <p>₹{averageExpense}</p>
+    </div>
+
+    <div className="smart-card">
+      <h3>Largest Expense</h3>
+      <p>₹{largestExpense}</p>
+    </div>
+
+    <div className="smart-card">
+      <h3>Savings Rate</h3>
+      <p>{savingsRate}%</p>
+    </div>
+
+    <div className="smart-card">
+      <h3>Financial Health</h3>
+      <p>{financialHealth}</p>
+    </div>
+
+  </div>
+</div>
   <div className="transactions">
     <h2>
       Recent Transactions
