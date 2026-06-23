@@ -7,6 +7,11 @@ import {
   Cell,
   Tooltip,
   ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
 } from "recharts";
 
 function App() {
@@ -55,6 +60,12 @@ const chartData =
       value: amount,
     })
   );
+  const trendData = expenses.map(
+  (expense, index) => ({
+    transaction: `T${index + 1}`,
+    amount: expense.amount,
+  })
+);
 
 
 useEffect(() => {
@@ -406,6 +417,29 @@ Finance Handler AI </div>
 
       <Tooltip />
     </PieChart>
+  </ResponsiveContainer>
+</div>
+<div className="trend-section">
+  <h2>Spending Trend</h2>
+
+  <ResponsiveContainer
+    width="100%"
+    height={350}
+  >
+    <LineChart data={trendData}>
+      <CartesianGrid strokeDasharray="3 3" />
+
+      <XAxis dataKey="transaction" />
+
+      <YAxis />
+
+      <Tooltip />
+
+      <Line
+        type="monotone"
+        dataKey="amount"
+      />
+    </LineChart>
   </ResponsiveContainer>
 </div>
   <div className="ai-insights">
