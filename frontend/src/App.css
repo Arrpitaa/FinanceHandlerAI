@@ -1,7 +1,12 @@
 body {
-margin: 0;
-font-family: Arial, sans-serif;
-background: #eef2f7;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    #f8fafc,
+    #e2e8f0
+  );
+  min-height: 100vh;
 }
 
 .container {
@@ -11,14 +16,29 @@ background: #eef2f7;
 }
 
 .navbar {
-background: #111827;
-color: white;
-padding: 18px 30px;
-border-radius: 12px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 30px;
+  background:
+    linear-gradient(
+      90deg,
+      #111827,
+      #1e3a8a
+    );
+
+  color: white;
+
+  padding: 18px 30px;
+
+  border-radius: 16px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 30px;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
 }
 
 .logo {
@@ -138,39 +158,53 @@ color: #2563eb;
 .expense-form,
 .budget-form,
 .analytics {
-background: white;
-padding: 30px;
-margin-top: 40px;
-border-radius: 20px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+
+  padding: 30px;
+  margin-top: 40px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.08);
 }
 
 .expense-form input,
 .budget-form input {
-width: 100%;
-padding: 12px;
-margin-top: 12px;
-margin-bottom: 12px;
-border-radius: 10px;
-border: 1px solid #ddd;
-box-sizing: border-box;
+  width: 100%;
+  padding: 14px;
+
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  border-radius: 12px;
+
+  border: 2px solid #e5e7eb;
+
+  box-sizing: border-box;
+
+  font-size: 15px;
+
+  transition: 0.3s;
 }
 
-.expense-form button {
-background: #2563eb;
-color: white;
-border: none;
-padding: 12px 20px;
-border-radius: 10px;
-cursor: pointer;
+.expense-form input:focus,
+.budget-form input:focus {
+  outline: none;
+  border-color: #2563eb;
 }
 
-.budget-form button {
-background: #16a34a;
-color: white;
-border: none;
-padding: 12px 20px;
-border-radius: 10px;
-cursor: pointer;
+.expense-form button,
+.budget-form button,
+.hero-buttons button {
+  transition: 0.3s;
+}
+
+.expense-form button:hover,
+.budget-form button:hover,
+.hero-buttons button:hover {
+  transform: translateY(-2px);
 }
 
 .progress-container {
@@ -183,9 +217,16 @@ margin-top: 15px;
 }
 
 .progress-bar {
-height: 100%;
-background: #2563eb;
-transition: 0.5s;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #3b82f6
+    );
+
+  transition: 0.6s;
 }
 
 .stats-grid {
@@ -328,4 +369,13 @@ color: #6b7280;
     padding: 20px;
   }
 
+}
+.analytics h2,
+.category-analytics h2,
+.ai-insights h2,
+.transactions h2,
+.expense-form h2,
+.budget-form h2 {
+  color: #111827;
+  margin-bottom: 20px;
 }

@@ -32,10 +32,13 @@ summary.total_budget) *
 
 const highestCategory =
 Object.entries(categorySummary).length > 0
-? Object.entries(categorySummary).sort(
+? (
+Object.entries(categorySummary).sort(
 (a, b) => b[1] - a[1]
-)[0][0]
+)[0][0] || "Uncategorized"
+)
 : "N/A";
+
 
 useEffect(() => {
 fetchSummary();
@@ -88,32 +91,42 @@ setExpenseData({
 };
 
 const addExpense = async () => {
+
+if (
+!expenseData.title.trim() ||
+!expenseData.amount ||
+!expenseData.category.trim()
+) {
+alert(
+"Please fill all fields before adding expense."
+);
+return;
+}
+
 try {
 await api.post("/expenses/", {
 title: expenseData.title,
-amount: Number(
-expenseData.amount
-),
-category:
-expenseData.category,
+amount: Number(expenseData.amount),
+category: expenseData.category,
 });
 
 
-  await fetchExpenses();
-  await fetchSummary();
-  await fetchCategorySummary();
+await fetchExpenses();
+await fetchSummary();
+await fetchCategorySummary();
 
-  setExpenseData({
-    title: "",
-    amount: "",
-    category: "",
-  });
+setExpenseData({
+  title: "",
+  amount: "",
+  category: "",
+});
+
+
 } catch (error) {
-  console.error(error);
+console.error(error);
 }
-
-
 };
+
 
 const addBudget = async () => {
 try {
