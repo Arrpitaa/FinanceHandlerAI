@@ -379,3 +379,11 @@ color: #6b7280;
   color: #111827;
   margin-bottom: 20px;
 }
+.chart-section {
+  background: white;
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 20px;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
+}

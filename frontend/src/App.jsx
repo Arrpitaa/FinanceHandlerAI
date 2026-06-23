@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import api from "./services/api";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 function App() {
 const [summary, setSummary] = useState({
@@ -31,6 +38,7 @@ summary.total_budget) *
 : 0;
 
 const highestCategory =
+
 Object.entries(categorySummary).length > 0
 ? (
 Object.entries(categorySummary).sort(
@@ -38,6 +46,15 @@ Object.entries(categorySummary).sort(
 )[0][0] || "Uncategorized"
 )
 : "N/A";
+const chartData =
+  Object.entries(categorySummary).map(
+    ([category, amount]) => ({
+      name:
+        category ||
+        "Uncategorized",
+      value: amount,
+    })
+  );
 
 
 useEffect(() => {
@@ -364,6 +381,33 @@ Finance Handler AI </div>
     )}
   </div>
 
+<div className="chart-section">
+  <h2>Expense Distribution</h2>
+
+  <ResponsiveContainer
+    width="100%"
+    height={350}
+  >
+    <PieChart>
+      <Pie
+        data={chartData}
+        dataKey="value"
+        nameKey="name"
+        outerRadius={120}
+      >
+        {chartData.map(
+          (entry, index) => (
+            <Cell
+              key={index}
+            />
+          )
+        )}
+      </Pie>
+
+      <Tooltip />
+    </PieChart>
+  </ResponsiveContainer>
+</div>
   <div className="ai-insights">
     <h2>AI Insights 🤖</h2>
 
