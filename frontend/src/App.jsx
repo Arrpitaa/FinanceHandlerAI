@@ -97,6 +97,29 @@ const financialHealth =
     : savingsRate >= 20
     ? "Average"
     : "Needs Improvement";
+const budgetUsage =
+  Number(spendingPercentage);
+
+const riskLevel =
+  budgetUsage >= 90
+    ? "High Risk"
+    : budgetUsage >= 70
+    ? "Medium Risk"
+    : "Low Risk";
+const alertMessage =
+  budgetUsage >= 90
+    ? "⚠️ Critical: Budget almost exhausted!"
+    : budgetUsage >= 70
+    ? "⚠️ Warning: Spending is increasing rapidly."
+    : "✅ Budget is under control.";
+const healthScore =
+  financialHealth === "Excellent"
+    ? 95
+    : financialHealth === "Good"
+    ? 75
+    : financialHealth === "Average"
+    ? 50
+    : 25;
 
 
 useEffect(() => {
@@ -537,6 +560,49 @@ Finance Handler AI </div>
     </div>
 
   </div>
+</div>
+<div className="health-section">
+
+  <h2>Financial Health Monitor</h2>
+
+  <div className="health-grid">
+
+    <div className="health-card">
+      <h3>Financial Health</h3>
+      <p>{financialHealth}</p>
+    </div>
+
+    <div className="health-card">
+      <h3>Risk Level</h3>
+      <p>{riskLevel}</p>
+    </div>
+
+    <div className="health-card">
+      <h3>Budget Usage</h3>
+      <p>{spendingPercentage}%</p>
+    </div>
+
+  </div>
+<div className="score-section">
+
+  <h3>Financial Health Score</h3>
+
+  <div className="score-bar-container">
+    <div
+      className="score-bar"
+      style={{
+        width: `${healthScore}%`,
+      }}
+    ></div>
+  </div>
+
+  <p>{healthScore}/100</p>
+
+</div>
+  <div className="alert-box">
+    {alertMessage}
+  </div>
+
 </div>
   <div className="transactions">
     <h2>
